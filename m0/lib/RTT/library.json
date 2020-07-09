@@ -1,0 +1,15 @@
+{
+  "name": "RTT",
+  "description": "Segger Real Time Transfer target library",
+  "keywords": "segger",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andyfarthing/SEGGER_RTT.git"
+  },
+  "version": "1.0",
+  "frameworks": "",
+  "platforms": "atmelsam",
+  "build": {
+    "libArchive": false
+  }
+}

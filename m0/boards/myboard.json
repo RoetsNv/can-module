@@ -1,0 +1,25 @@
+{
+  "build": {
+    "cpu": "cortex-m0plus",
+    "extra_flags": "-D__SAMC21E18A__",
+    "f_cpu": "4000000L",
+    "mcu": "samc21e18a"
+  },
+  "debug": {
+    "jlink_device": "ATSAMC21E18",
+    "openocd_chipname": "at91samd21g18",
+    "openocd_target": "at91samdXX",
+    "svd_path": "ATSAMC21E18A.svd"
+  },
+  "frameworks": [],
+  "name": "CAN M0",
+  "upload": {
+    "disable_flushing": true,
+    "maximum_ram_size": 32768,
+    "maximum_size": 262144,
+    "protocol": "jlink",
+    "protocols": ["sam-ba", "blackmagic", "jlink", "atmel-ice"]
+  },
+  "url": "www.ginko.io",
+  "vendor": "Ginko"
+}
