@@ -2,16 +2,16 @@ format_version: '2'
 name: My Project
 versions:
   api: '1.0'
-  backend: 1.7.303
-  commit: 1e07622763d149970fd8808a8f12ff3b1e84e0d7
+  backend: 1.7.391
+  commit: d4b7e9f65a05ebffcb0986e4060cb8c0a313e69a
   content: unknown
   content_pack_name: unknown
   format: '2'
-  frontend: 1.7.303
-  packs_version_avr8: 1.0.1410
+  frontend: 1.7.391
+  packs_version_avr8: 1.0.1421
   packs_version_qtouch: unknown
-  packs_version_sam: 1.0.1554
-  version_backend: 1.7.303
+  packs_version_sam: 1.0.1658
+  version_backend: 1.7.391
   version_frontend: ''
 board:
   identifier: CustomBoard
@@ -496,7 +496,7 @@ drivers:
       gclk_arch_gen_5_runstdby: false
       gclk_arch_gen_6_enable: true
       gclk_arch_gen_6_idc: false
-      gclk_arch_gen_6_oe: false
+      gclk_arch_gen_6_oe: true
       gclk_arch_gen_6_oov: false
       gclk_arch_gen_6_runstdby: false
       gclk_arch_gen_7_enable: false
@@ -507,9 +507,9 @@ drivers:
       gclk_gen_0_div: 1
       gclk_gen_0_div_sel: false
       gclk_gen_0_oscillator: 48MHz Internal Oscillator (OSC48M)
-      gclk_gen_1_div: 1
+      gclk_gen_1_div: 3
       gclk_gen_1_div_sel: false
-      gclk_gen_1_oscillator: External Crystal Oscillator 0.4-32MHz (XOSC)
+      gclk_gen_1_oscillator: 48MHz Internal Oscillator (OSC48M)
       gclk_gen_2_div: 1
       gclk_gen_2_div_sel: false
       gclk_gen_2_oscillator: External Crystal Oscillator 0.4-32MHz (XOSC)
@@ -522,7 +522,7 @@ drivers:
       gclk_gen_5_div: 1
       gclk_gen_5_div_sel: false
       gclk_gen_5_oscillator: External Crystal Oscillator 0.4-32MHz (XOSC)
-      gclk_gen_6_div: 1
+      gclk_gen_6_div: 3
       gclk_gen_6_div_sel: false
       gclk_gen_6_oscillator: 48MHz Internal Oscillator (OSC48M)
       gclk_gen_7_div: 1
@@ -716,6 +716,70 @@ drivers:
     variant: null
     clocks:
       domain_group: null
+  CAN_0:
+    user_label: CAN_0
+    definition: Atmel:SAMC21_Drivers:0.0.1::SAMC21E18A-AN::CAN0::driver_config_definition::CAN::HAL:Driver:CAN.Async
+    functionality: CAN
+    api: HAL:Driver:CAN_Async
+    configuration:
+      can_btp_brp: 3
+      can_btp_sjw: 4
+      can_btp_tseg1: 11
+      can_btp_tseg2: 8
+      can_cccr_brse: false
+      can_cccr_fdoe: false
+      can_dbtp_dbrp: 1
+      can_dbtp_dsjw: 4
+      can_dbtp_dtseg1: 11
+      can_dbtp_dtseg2: 4
+      can_dbtp_tdc: false
+      can_gfc_anfe: Reject
+      can_gfc_anfs: Reject
+      can_gfc_rrfe: Filter remote frames with 29-bit standard IDs
+      can_gfc_rrfs: Filter remote frames with 11-bit standard IDs
+      can_ie_bo: false
+      can_ie_do: false
+      can_ie_ea: false
+      can_ie_ep: false
+      can_ie_ew: false
+      can_mrcfg_dqos: Background (no sensitive operation)
+      can_mrcfg_runstandby: false
+      can_rxesc_f0ds: 8 byte data field.
+      can_rxf0c_f0om: blocking mode
+      can_rxf0c_f0s: 2
+      can_rxf0c_f0wm: 0
+      can_sidfc_lss: 2
+      can_txbc_tfqs: 2
+      can_txefc_efs: 2
+      can_txefc_efwm: 0
+      can_txesc_tbds: 8 byte data field.
+      can_xidam_eidm: 0
+      can_xidfc_lss: 2
+    optional_signals:
+    - identifier: CAN_0:RX
+      pad: PA25
+      mode: Enabled
+      configuration: null
+      definition: Atmel:SAMC21_Drivers:0.0.1::SAMC21E18A-AN::optional_signal_definition::CAN0.RX
+      name: CAN0/RX
+      label: RX
+    - identifier: CAN_0:TX
+      pad: PA24
+      mode: Enabled
+      configuration: null
+      definition: Atmel:SAMC21_Drivers:0.0.1::SAMC21E18A-AN::optional_signal_definition::CAN0.TX
+      name: CAN0/TX
+      label: TX
+    variant: null
+    clocks:
+      domain_group:
+        nodes:
+        - name: CAN
+          input: Generic clock generator 6
+          external: false
+          external_frequency: 0
+        configuration:
+          can_gclk_selection: Generic clock generator 6
 pads:
   LED15:
     name: PA11
@@ -759,6 +823,25 @@ pads:
       pad_function: H
       pad_initial_level: Low
       pad_pull_config: 'Off'
+  PA24:
+    name: PA24
+    definition: Atmel:SAMC21_Drivers:0.0.1::SAMC21E18A-AN::pad::PA24
+    mode: Peripheral IO
+    user_label: PA24
+    configuration: null
+  PA25:
+    name: PA25
+    definition: Atmel:SAMC21_Drivers:0.0.1::SAMC21E18A-AN::pad::PA25
+    mode: Peripheral IO
+    user_label: PA25
+    configuration: null
+  CAN_EN:
+    name: PA27
+    definition: Atmel:SAMC21_Drivers:0.0.1::SAMC21E18A-AN::pad::PA27
+    mode: Digital output
+    user_label: CAN_EN
+    configuration:
+      pad_initial_level: High
   BUTTON:
     name: PA28
     definition: Atmel:SAMC21_Drivers:0.0.1::SAMC21E18A-AN::pad::PA28
